@@ -1,0 +1,123 @@
+format-version: 1.2
+data-version: test/1
+date: 09:11:2021 17:38
+remark: test
+ontology: toy_uberon
+property_value: dc-description "test" xsd:string
+property_value: dcterms-license http://creativecommons.org/licenses/by/3.0/
+property_value: dc-title "Test" xsd:string
+owl-axioms: Prefix(owl:=<http://www.w3.org/2002/07/owl#>)\nPrefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)\nPrefix(xml:=<http://www.w3.org/XML/1998/namespace>)\nPrefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)\nPrefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)\n\n\nOntology(\nDeclaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_10219>))\nDeclaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_7586>))\nDeclaration(Class(<http://purl.obolibrary.org/obo/NCBITaxon_7711>))\nDeclaration(ObjectProperty(<http://purl.obolibrary.org/obo/RO_0002162>))\n\n############################\n#   Classes\n############################\n\n# Class: <http://purl.obolibrary.org/obo/NCBITaxon_10219> (Hemichordata)\n\n\n# Class: <http://purl.obolibrary.org/obo/NCBITaxon_7586> (Echinodermata)\n\n\n# Class: <http://purl.obolibrary.org/obo/NCBITaxon_7711> (Chordata)\n\n\n\nDisjointClasses(<http://purl.obolibrary.org/obo/NCBITaxon_10219> <http://purl.obolibrary.org/obo/NCBITaxon_7586> <http://purl.obolibrary.org/obo/NCBITaxon_7711>)\nDisjointClasses(ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_10219>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_7586>) ObjectSomeValuesFrom(<http://purl.obolibrary.org/obo/RO_0002162> <http://purl.obolibrary.org/obo/NCBITaxon_7711>))\n)
+
+[Term]
+id: CARO:0000003
+name: connected anatomical structure
+
+[Term]
+id: UBERON:0003075
+name: neural plate
+is_a: CARO:0000003
+relationship: only_in_taxon NCBITaxon:7711
+
+[Term]
+id: UBERON:0000047
+name: simple eye
+is_a: CARO:0000003
+
+[Term]
+id: UBERON:0000050
+name: simple eye with multiple lenses
+is_a: UBERON:0000047 ! simple eye
+relationship: never_in_taxon NCBITaxon:7711
+
+[Term]
+id: UBERON:9999999
+name: fake lens
+is_a: CARO:0000003
+relationship: part_of UBERON:0000050 ! simple eye with multiple lenses
+
+[Term]
+id: UBERON:0000019
+name: camera-type eye
+is_a: UBERON:0000047 ! simple eye
+relationship: develops_from UBERON:0003075 ! neural plate
+
+[Term]
+id: NCBITaxon:33511
+name: Deuterostomia
+
+[Term]
+id: NCBITaxon:7711
+name: Chordata
+is_a: NCBITaxon:33511 ! Deuterostomia
+
+[Term]
+id: NCBITaxon:7586
+name: Echinodermata
+is_a: NCBITaxon:33511 ! Deuterostomia
+
+[Term]
+id: NCBITaxon:10219
+name: Hemichordata 
+is_a: NCBITaxon:33511 ! Deuterostomia
+
+[Term]
+id: NCBITaxon:7742
+name: Vertebrata
+is_a: NCBITaxon:7711 ! Chordata
+
+[Typedef]
+id: in_taxon
+name: in taxon
+def: "x is in taxon y if an only if y is an organism, and the relationship between x and y is one of: part of (reflexive), developmentally preceded by, derives from, secreted by, expressed." []
+xref: RO:0002162
+range: CARO:0001010
+holds_over_chain: develops_from in_taxon
+holds_over_chain: part_of in_taxon
+
+[Typedef]
+id: only_in_taxon
+name: only in taxon
+def: "x only in taxon y if and only if x is in taxon y, and there is no other organism z such that y!=z a and x is in taxon z." []
+xref: RO:0002160
+is_a: in_taxon ! in taxon
+
+[Typedef]
+id: never_in_taxon
+name: never in taxon
+def: "x never in taxon T if and only if T is a class, and x does not instantiate the class expression \"in taxon some T\". Note that this is a shortcut relation, and should be used as a hasValue restriction in OWL." []
+xref: RO:0002161
+expand_assertion_to: "?X DisjointWith RO_0002162 some ?Y " []
+expand_assertion_to: "Class: <http://www.w3.org/2002/07/owl#Nothing> EquivalentTo: ?X and (RO_0002162 some ?Y)" []
+is_metadata_tag: true
+is_class_level: true
+
+[Typedef]
+id: part_of
+name: part of
+xref: BFO:0000050
+is_transitive: true
+
+[Typedef]
+id: develops_from
+name: develops from
+xref: RO:0002202
+is_transitive: true
+transitive_over: part_of ! part_of
+
+[Typedef]
+id: dc-description
+name: description
+xref: http://purl.org/dc/elements/1.1/description
+is_metadata_tag: true
+
+[Typedef]
+id: dcterms-license
+name: license
+xref: http://purl.org/dc/terms/license
+is_metadata_tag: true
+
+[Typedef]
+id: dc-title
+name: title
+xref: http://purl.org/dc/elements/1.1/title
+is_metadata_tag: true
