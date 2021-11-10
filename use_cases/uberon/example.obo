@@ -66,6 +66,13 @@ name: fake lens
 is_a: CARO:0000003 ! connected anatomical structure
 relationship: part_of UBERON:0000050 ! simple eye with multiple lenses
 
+[Term]
+id: UBERON:9999998
+name: fake lens with GCIs
+is_a: CARO:0000003 ! connected anatomical structure
+relationship: part_of UBERON:0000050 {gci_relation="part_of", gci_filler="NCBITaxon:7586"} ! simple eye with multiple lenses
+relationship: part_of UBERON:0000047 {gci_relation="part_of", gci_filler="NCBITaxon:10219"} ! simple eye
+
 [Typedef]
 id: dc-description
 name: description
