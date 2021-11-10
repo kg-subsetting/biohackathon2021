@@ -15,5 +15,5 @@ start=@:lipids
 }
 
 :taxon {
-	wdt:P31 wd:Q16521;
+	wdt:P31 [wd:Q16521];
 }
