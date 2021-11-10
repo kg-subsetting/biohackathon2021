@@ -1,0 +1,53 @@
+speciesId	genus	species	speciesCommonName	speciesDisplayOrder	taxonId	genomeFilePath	genomeVersion	dataSourceId	genomeSpeciesId
+6239	Caenorhabditis	elegans	nematode	5	6237	caenorhabditis_elegans/Caenorhabditis_elegans.WBcel235	WBcel235	2	0
+7227	Drosophila	melanogaster	fruit fly	4	32351	drosophila_melanogaster/Drosophila_melanogaster.BDGP6.28	BDGP6.28	2	0
+7237	Drosophila	pseudoobscura		51	32358	drosophila_pseudoobscura/Drosophila_pseudoobscura.Dpse_3.0	Dpse_3.0	24	0
+7240	Drosophila	simulans		52	32351	drosophila_simulans/Drosophila_simulans.ASM75419v3	ASM75419v3	24	0
+7740	Branchiostoma	lanceolatum	Common lancelet	49	7737	branchiostoma_lanceolatum/Branchiostoma_lanceolatum.BraLan2	BraLan2	24	0
+7897	Latimeria	chalumnae	Coelacanth	50	7896	latimeria_chalumnae/Latimeria_chalumnae.LatCha1	LatCha1	2	0
+7918	Lepisosteus	oculatus	Spotted gar	36	7916	lepisosteus_oculatus/Lepisosteus_oculatus.LepOcu1	LepOcu1	2	0
+7936	Anguilla	anguilla	European freshwater eel	37	7935	anguilla_anguilla/anguilla_anguilla_GCF_013347855.1_fAngAng1.pri	fAngAng1.pri	37	0
+7955	Danio	rerio	zebrafish	3	7954	danio_rerio/Danio_rerio.GRCz11	GRCz11	2	0
+7994	Astyanax	mexicanus	Blind cave fish	38	7993	astyanax_mexicanus/Astyanax_mexicanus.Astyanax_mexicanus-2.0	Astyanax_mexicanus-2.0	2	0
+8010	Esox	lucius	Northern pike	39	8009	esox_lucius/Esox_lucius.Eluc_v4	Eluc_v4	2	0
+8030	Salmo	salar	Atlantic salmon	40	8028	salmo_salar/Salmo_salar.ICSASG_v2	ICSASG_v2	2	0
+8049	Gadus	morhua	Atlantic cod	41	8048	gadus_morhua/Gadus_morhua.gadMor1	gadMor1	2	0
+8081	Poecilia	reticulata	Guppy	42	8080	poecilia_reticulata/Poecilia_reticulata.Guppy_female_1.0_MT	Guppy_female_1.0_MT	2	0
+8090	Oryzias	latipes	Japanese rice fish	43	8089	oryzias_latipes/Oryzias_latipes.ASM223467v1	ASM223467v1	2	0
+8154	Astatotilapia	calliptera	Eastern happy	44	8152	astatotilapia_calliptera/Astatotilapia_calliptera.fAstCal1.2	fAstCal1.2	2	0
+8355	Xenopus	laevis	African clawed frog	33	262014	xenopus_laevis/xenopus_laevis_GCF_001663975.1_Xenopus_laevis_v2	xenLae2	37	0
+8364	Xenopus	tropicalis	western clawed frog	34	8363	xenopus_tropicalis/Xenopus_tropicalis.Xenopus_tropicalis_v9.1	Xenopus_tropicalis_v9.1	2	0
+9031	Gallus	gallus	chicken	15	9030	gallus_gallus/Gallus_gallus.GRCg6a	GRCg6a	2	0
+9103	Meleagris	gallopavo	Wild turkey	16	9102	meleagris_gallopavo/Meleagris_gallopavo.Turkey_2.01	Turkey_2.01	2	0
+9258	Ornithorhynchus	anatinus	platypus	17	9257	ornithorhynchus_anatinus/Ornithorhynchus_anatinus.mOrnAna1.p.v1	mOrnAna1.p.v1	2	0
+9483	Callithrix	jacchus	White-tufted-ear marmoset	18	1965096	callithrix_jacchus/Callithrix_jacchus.ASM275486v1	ASM275486v1	2	0
+9531	Cercocebus	atys	Sooty mangabey	19	9529	cercocebus_atys/Cercocebus_atys.Caty_1.0	Caty_1.0	2	0
+9541	Macaca	fascicularis	Crab-eating macaque	20	9539	macaca_fascicularis/Macaca_fascicularis.Macaca_fascicularis_5.0	Macaca_fascicularis_5.0	2	0
+9544	Macaca	mulatta	macaque	21	9539	macaca_mulatta/Macaca_mulatta.Mmul_10	Mmul_10	2	0
+9545	Macaca	nemestrina	Pig-tailed macaque	22	9539	macaca_nemestrina/Macaca_nemestrina.Mnem_1.0	Mnem_1.0	2	0
+9555	Papio	anubis	Olive baboon	23	9554	papio_anubis/Papio_anubis.Panu_3.0	Panu_3.0	2	0
+9593	Gorilla	gorilla	gorilla	24	9592	gorilla_gorilla/Gorilla_gorilla.gorGor4	gorGor4	2	0
+9597	Pan	paniscus	bonobo	25	9596	pan_paniscus/Pan_paniscus.panpan1.1	panpan1.1	2	0
+9598	Pan	troglodytes	chimpanzee	26	9596	pan_troglodytes/Pan_troglodytes.Pan_tro_3.0	Pan_tro_3.0	2	0
+9606	Homo	sapiens	human	1	9605	homo_sapiens/Homo_sapiens.GRCh38	GRCh38.p13	2	0
+9615	Canis	lupus familiaris	dog	6	9612	canis_lupus_familiaris/Canis_lupus_familiaris.CanFam3.1	CanFam3.1	2	0
+9685	Felis	catus	cat	7	9682	felis_catus/Felis_catus.Felis_catus_9.0	Felis_catus_9.0	2	0
+9796	Equus	caballus	horse	8	35510	equus_caballus/Equus_caballus.EquCab3.0	EquCab3.0	2	0
+9823	Sus	scrofa	pig	9	9822	sus_scrofa/Sus_scrofa.Sscrofa11.1	Sscrofa11.1	2	0
+9913	Bos	taurus	cattle	10	9903	bos_taurus/Bos_taurus.ARS-UCD1.2	ARS-UCD1.2	2	0
+9925	Capra	hircus	Goat	11	9922	capra_hircus/Capra_hircus.ARS1	ARS1	2	0
+9940	Ovis	aries	Sheep	12	9935	ovis_aries/Ovis_aries.Oar_v3.1	Oar_v3.1	2	0
+9974	Manis	javanica	Malayan pangolin	29	9973	manis_javanica/manis_javanica_GCF_014570535.1_YNU_ManJav_2.0	YNU_ManJav_2.0	37	0
+9986	Oryctolagus	cuniculus	rabbit	13	9984	oryctolagus_cuniculus/Oryctolagus_cuniculus.OryCun2.0	OryCun2.0	2	0
+10090	Mus	musculus	mouse	2	862507	mus_musculus/Mus_musculus.GRCm38	GRCm38.p6	2	0
+10116	Rattus	norvegicus	rat	30	10114	rattus_norvegicus/Rattus_norvegicus.Rnor_6.0	Rnor_6.0	2	0
+10141	Cavia	porcellus	guinea pig	14	10140	cavia_porcellus/Cavia_porcellus.Cavpor3.0	Cavpor3.0	2	0
+10181	Heterocephalus	glaber	Naked mole rat	31	10180	heterocephalus_glaber_female/Heterocephalus_glaber_female.HetGla_female_1.0	HetGla_female_1.0	2	0
+13616	Monodelphis	domestica	opossum	32	13615	monodelphis_domestica/Monodelphis_domestica.ASM229v1	ASM229v1	2	0
+28377	Anolis	carolinensis	green anole	35	28376	anolis_carolinensis/Anolis_carolinensis.AnoCar2.0	AnoCar2.0	2	0
+30608	Microcebus	murinus	Gray mouse lemur	27	13149	microcebus_murinus/Microcebus_murinus.Mmur_3.0	Mmur_3.0	2	0
+32507	Neolamprologus	brichardi	Fairy cichlid	45	32506	neolamprologus_brichardi/Neolamprologus_brichardi.NeoBri1.0	NeoBri1.0	2	0
+52904	Scophthalmus	maximus	Turbot	46	52903	scophthalmus_maximus/Scophthalmus_maximus.ASM318616v1	ASM318616v1	2	0
+60711	Chlorocebus	sabaeus	Green monkey	28	392815	chlorocebus_sabaeus/Chlorocebus_sabaeus.ChlSab1.1	ChlSab1.1	2	0
+69293	Gasterosteus	aculeatus	Three-spined stickleback	47	69292	gasterosteus_aculeatus/Gasterosteus_aculeatus.BROADS1	BROAD S1	2	0
+105023	Nothobranchius	furzeri	Turquoise killifish	48	28779	nothobranchius_furzeri/Nothobranchius_furzeri.Nfu_20140520	Nfu_20140520	2	0
