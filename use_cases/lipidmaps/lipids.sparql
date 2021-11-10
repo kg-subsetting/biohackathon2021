@@ -1,7 +1,1 @@
-SELECT DISTINCT ?lipid 
-WHERE {
-
-	?lipid wdt:P2063 ?lipidMapsId.
-
-}
-LIMIT 10
+SELECT DISTINCT ?item WHERE { ?item wdt:P2063 ?lipidMapsId. } LIMIT 10
