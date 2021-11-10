@@ -42,7 +42,7 @@ obo:neverInTaxon
   rdf:type owl:AnnotationProperty ;
   obo:definition "x never in taxon T if and only if T is a class, and x does not instantiate the class expression \"in taxon some T\". Note that this is a shortcut relation, and should be used as a hasValue restriction in OWL." ;
   obo:expandAssertionTo "?X DisjointWith inTaxon some ?Y " ,
-                               "Class: <http://www.w3.org/2002/07/owl#Nothing> EquivalentTo: ?X and (inTaxon some ?Y)" ;
+      "Class: <http://www.w3.org/2002/07/owl#Nothing> EquivalentTo: ?X and (inTaxon some ?Y)" ;
   oboInOwl:hasDbXref "RO:0002161" ;
   oboInOwl:id "never_in_taxon" ;
   oboInOwl:is_class_level "true"^^xsd:boolean ;
@@ -179,7 +179,7 @@ obo:ConnectedAnatomicalStructure
 obo:Hemichordata
   rdf:type owl:Class ;
   rdfs:subClassOf obo:Deuterostomia ;
-  owl:disjointWith obo:Echinodermata, obo:Chordata ;
+  owl:disjointWith obo:Echinodermata , obo:Chordata ;
   oboInOwl:id "NCBITaxon:10219" ;
   rdfs:label "Hemichordata" .
 
@@ -234,7 +234,8 @@ obo:SimpleEye
 
 
 ###  http://purl.obolibrary.org/obo/SimpleEyeWithMultipleLenses
-obo:SimpleEyeWithMultipleLenses rdf:type owl:Class ;
+obo:SimpleEyeWithMultipleLenses
+  rdf:type owl:Class ;
   rdfs:subClassOf obo:SimpleEye ;
   obo:neverInTaxon obo:Chordata ;
   oboInOwl:id "UBERON:0000050" ;
@@ -242,7 +243,8 @@ obo:SimpleEyeWithMultipleLenses rdf:type owl:Class ;
 
 
 ###  http://purl.obolibrary.org/obo/NeuralPlate
-obo:NeuralPlate rdf:type owl:Class ;
+obo:NeuralPlate
+  rdf:type owl:Class ;
   rdfs:subClassOf
     obo:ConnectedAnatomicalStructure ,
     [ owl:onProperty obo:onlyInTaxon ; owl:someValuesFrom obo:Chordata ] ;
@@ -259,7 +261,8 @@ obo:FakeLensWithGcis
 
 
 ###  http://purl.obolibrary.org/obo/FakeLens
-obo:FakeLens rdf:type owl:Class ;
+obo:FakeLens
+  rdf:type owl:Class ;
   rdfs:subClassOf
     obo:ConnectedAnatomicalStructure ,
     [ owl:onProperty obo:partOf ; owl:someValuesFrom obo:SimpleEyeWithMultipleLenses ] ;
@@ -270,7 +273,7 @@ obo:FakeLens rdf:type owl:Class ;
 ###  http://www.w3.org/2002/07/owl#Nothing
 owl:Nothing owl:equivalentClass
   [ owl:intersectionOf
-    ( obo:SimpleEyeWithMultipleLense
+    ( obo:SimpleEyeWithMultipleLenses
       [ owl:onProperty obo:inTaxon ; owl:someValuesFrom obo:Chordata ]
     ) ;
     rdf:type owl:Class
