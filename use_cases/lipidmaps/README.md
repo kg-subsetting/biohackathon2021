@@ -6,14 +6,14 @@ Below is the ShEx template to validate the extracted entities and only the passi
 
 ![ShEx template visualization](lipids.shex.png?raw=true)
 
-Predicates used:
+## Predicates used
 * https://www.wikidata.org/wiki/Property:P2063
 * https://www.wikidata.org/wiki/Property:P234
 * https://www.wikidata.org/wiki/Property:P235
 * https://www.wikidata.org/wiki/Property:P703
 
 
-### Obtaining the subset
+## Obtaining the subset
 
 Please run the wikidata-lipids-slurper.ipynb notebook and the output will be a collection of ttl files.
 
