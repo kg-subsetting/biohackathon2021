@@ -20,14 +20,12 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 start= (
   @<#Closure-ConnectedAnat>
-  AND @<#Introduced>
-  AND NOT @<#DroppedOut>
-)
-OR (
+  AND @<#OnlyInTaxonIntroduced>
+) OR (
   @<#Closure-ConnectedAnat>
-  AND NOT @<#Introduced>
-  AND NOT @<#DroppedOut>
-  AND NOT @<#Drop2>
+  AND NOT @<#OnlyInTaxonIntroduced>
+  AND NOT @<#NeverInTaxonDropOut>
+  AND NOT @<#OnlyInTaxonDropOut>
 )
 
 <#TargetTaxa> [obo:Vertebrata] OR {
@@ -35,14 +33,14 @@ OR (
   ^rdfs:subClassOf . *
 }
 
-<#Drop2> {
+<#OnlyInTaxonDropOut> {
   rdfs:subClassOf {
     owl:onProperty [obo:onlyInTaxon] ;
     owl:someValuesFrom NOT @<#TargetTaxa>
   } ;
   rdfs:subClassOf . *
 } OR {
-  rdfs:subClassOf @<#Drop2> ;
+  rdfs:subClassOf @<#OnlyInTaxonDropOut> ;
   rdfs:subClassOf . *
 } OR {
   rdfs:subClassOf {
@@ -50,13 +48,13 @@ OR (
       owl:onProperty [obo:developsFrom] |
       owl:onProperty [obo:partOf]
     ) ;
-    owl:someValuesFrom @<#Drop2>
+    owl:someValuesFrom @<#OnlyInTaxonDropOut>
   } ;
   rdfs:subClassOf . *
 }
 
-<#Introduced> {
-  rdfs:subClassOf @<#Introduced> ;
+<#OnlyInTaxonIntroduced> {
+  rdfs:subClassOf @<#OnlyInTaxonIntroduced> ;
   rdfs:subClassOf . *
 } OR {
   rdfs:subClassOf {
@@ -67,16 +65,16 @@ OR (
 } OR {
   rdfs:subClassOf {
     owl:onProperty [obo:developsFrom] ;
-    owl:someValuesFrom @<#Introduced>
+    owl:someValuesFrom @<#OnlyInTaxonIntroduced>
   } ;
   rdfs:subClassOf . *
 }
 
-<#DroppedOut> {
+<#NeverInTaxonDropOut> {
   obo:neverInTaxon @<#TargetTaxa> ;
   obo:neverInTaxon . *
 } OR {
-  rdfs:subClassOf @<#DroppedOut> ;
+  rdfs:subClassOf @<#NeverInTaxonDropOut> ;
   rdfs:subClassOf . *
 } OR {
   rdfs:subClassOf {
@@ -84,7 +82,7 @@ OR (
       owl:onProperty [obo:developsFrom] |
       owl:onProperty [obo:partOf]
     ) ;
-    owl:someValuesFrom @<#DroppedOut>
+    owl:someValuesFrom @<#NeverInTaxonDropOut>
   } ;
   rdfs:subClassOf . *
 }
