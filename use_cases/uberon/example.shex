@@ -18,14 +18,58 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
 
-start= {
-  rdfs:subClassOf @<#Closure-ConnectedAnat> ;
-  rdfs:subClassOf . *
-} AND NOT @<#DroppedOut>
+start= (
+  @<#Closure-ConnectedAnat>
+  AND @<#Introduced>
+  AND NOT @<#DroppedOut>
+)
+OR (
+  @<#Closure-ConnectedAnat>
+  AND NOT @<#Introduced>
+  AND NOT @<#DroppedOut>
+  AND NOT @<#Drop2>
+)
 
 <#TargetTaxa> [obo:Vertebrata] OR {
   ^rdfs:subClassOf @<#TargetTaxa> ;
   ^rdfs:subClassOf . *
+}
+
+<#Drop2> {
+  rdfs:subClassOf {
+    owl:onProperty [obo:onlyInTaxon] ;
+    owl:someValuesFrom NOT @<#TargetTaxa>
+  } ;
+  rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf @<#Drop2> ;
+  rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf {
+    (
+      owl:onProperty [obo:developsFrom] |
+      owl:onProperty [obo:partOf]
+    ) ;
+    owl:someValuesFrom @<#Drop2>
+  } ;
+  rdfs:subClassOf . *
+}
+
+<#Introduced> {
+  rdfs:subClassOf @<#Introduced> ;
+  rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf {
+    owl:onProperty [obo:onlyInTaxon] ;
+    owl:someValuesFrom @<#TargetTaxa>
+  } ;
+  rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf {
+    owl:onProperty [obo:developsFrom] ;
+    owl:someValuesFrom @<#Introduced>
+  } ;
+  rdfs:subClassOf . *
 }
 
 <#DroppedOut> {
@@ -36,6 +80,10 @@ start= {
   rdfs:subClassOf . *
 } OR {
   rdfs:subClassOf {
+    (
+      owl:onProperty [obo:developsFrom] |
+      owl:onProperty [obo:partOf]
+    ) ;
     owl:someValuesFrom @<#DroppedOut>
   } ;
   rdfs:subClassOf . *
