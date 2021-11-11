@@ -171,6 +171,8 @@ obo:developsFrom
 ###  http://purl.obolibrary.org/obo/ConnectedAnatomicalStructure
 obo:ConnectedAnatomicalStructure
   rdf:type owl:Class ;
+  # rdfs:subClassOf
+  #   [ owl:onProperty obo:inTaxon ; owl:someValuesFrom obo:Vertebrata ] ;
   oboInOwl:id "CARO:0000003" ;
   rdfs:label "connected anatomical structure" .
 
