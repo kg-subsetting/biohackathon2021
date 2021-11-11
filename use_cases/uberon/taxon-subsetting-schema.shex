@@ -30,7 +30,7 @@ start= (
   AND NOT @<#OnlyInTaxonDropOut>
 )
 
-<#TargetTaxa> [ncbi_taxon:7586] OR {
+<#TargetTaxa> [ncbi_taxon:9606] OR {
   ^rdfs:subClassOf @<#TargetTaxa> ;
   ^rdfs:subClassOf . *
 }
@@ -146,7 +146,7 @@ start= (
   }
 }
 
-<#Closure-ConnectedAnat> [obo:CARO_0000003] OR {
+<#Closure-ConnectedAnat> [obo:UBERON_0001062] OR {
   rdfs:subClassOf @<#Closure-ConnectedAnat> ;
   rdfs:subClassOf . *
 }
