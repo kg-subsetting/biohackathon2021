@@ -2,6 +2,14 @@
 #   shex-validate -x example.shex -d example2.ttl -m '{ FOCUS rdfs:label _ }@start' --grep --list
 # from github clone:
 #   shex.js/packages/shex-cli/bin/validate...
+# expected output:
+# [
+#   "http://purl.obolibrary.org/obo/Camera-TypeEye",
+#   "http://purl.obolibrary.org/obo/SimpleEye",
+#   "http://purl.obolibrary.org/obo/NeuralPlate",
+#   "http://purl.obolibrary.org/obo/FakeLensWithGcis"
+# ]
+
 
 BASE <http://localhost/toy/>
 
