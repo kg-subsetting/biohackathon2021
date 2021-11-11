@@ -1,0 +1,11 @@
+anatEntityId	anatEntityName	anatEntityDescription	startStageId	endStageId	nonInformative
+UBERON:0000002	uterine cervix	Lower, narrow portion of the uterus where it joins with the top end of the vagina.	UBERON:0000104	UBERON:0000104	0
+UBERON:0000003	naris	Orifice of the olfactory system. The naris is the route by which odorants enter the olfactory system[MAH].	UBERON:0000104	UBERON:0000104	0
+UBERON:0000004	nose	The olfactory organ of vertebrates, consisting of nares, olfactory epithelia and the structures and skeletal framework of the nasal cavity.	UBERON:0000104	UBERON:0000104	0
+UBERON:0000005	chemosensory organ	NULL	UBERON:0000104	UBERON:0000104	0
+UBERON:0000006	islet of Langerhans	the clusters of hormone-producing cells that are scattered throughout the pancreas	UBERON:0000104	UBERON:0000104	0
+UBERON:0000007	pituitary gland	The pituitary gland is an endocrine gland that secretes hormones that regulate many other glands [GO]. An endocrine gland located ventral to the diencephalon and derived from mixed neuroectodermal and non neuroectodermal origin [ZFIN].	UBERON:0000104	UBERON:0000104	0
+UBERON:0000009	submucosa	A layer of dense irregular connective tissue that lines organs and supports the mucosa, as well as joins the mucosa to the bulk of underlying smooth muscle. [WP,unvetted].	UBERON:0000104	UBERON:0000104	0
+UBERON:0000010	peripheral nervous system	A major division of the nervous system that contains nerves which connect the central nervous system (CNS) with sensory organs, other organs, muscles, blood vessels and glands.	UBERON:0000104	UBERON:0000104	0
+UBERON:0000011	parasympathetic nervous system	The parasympathetic nervous system is one of the two divisions of the vertebrate autonomic nervous system. Parasympathetic nerves emerge cranially as pre ganglionic fibers from oculomotor, facial, glossopharyngeal and vagus and from the sacral region of the spinal cord. Most neurons are cholinergic and responses are mediated by muscarinic receptors. The parasympathetic system innervates, for example: salivary glands, thoracic and abdominal viscera, bladder and genitalia[GO].	UBERON:0000104	UBERON:0000104	0
+UBERON:0000012	somatic nervous system	Part of peripheral nervous system that includes the somatic parts of the cranial and spinal nerves and their ganglia and the peripheral sensory receptors.	UBERON:0000104	UBERON:0000104	0

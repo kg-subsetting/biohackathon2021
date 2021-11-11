@@ -1,0 +1,15 @@
+id | taxon         | parent
+1  | Hemichordata  | Deuterostomia
+2  | Echinodermata | Deuterostomia
+3  | Chordata      | Deuterostomia
+
+
+
+
+_:1
+  db:taxon obo:Hemichordata ;
+  db:parent obo:Deuterostomia .
+
+_:2
+  db:taxon obo:Echinodermata ;
+  db:parent obo:Deuterostomia .

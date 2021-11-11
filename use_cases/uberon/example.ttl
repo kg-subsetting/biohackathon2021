@@ -1,0 +1,327 @@
+BASE <http://purl.obolibrary.org/obo/toy_uberon.owl>
+
+PREFIX : <http://purl.obolibrary.org/obo/toy_uberon.owl#>
+PREFIX dc: <http://purl.org/dc/elements/1.1/>
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xml: <http://www.w3.org/XML/1998/namespace>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX terms: <http://purl.org/dc/terms/>
+PREFIX oboInOwl: <http://www.geneontology.org/formats/oboInOwl#>
+
+<http://purl.obolibrary.org/obo/toy_uberon.owl>
+  rdf:type owl:Ontology ;
+  owl:versionIRI <http://purl.obolibrary.org/obo/toy_uberon/test/1/toy_uberon.owl> ;
+  dc:description "test" ;
+  dc:title "Test" ;
+  terms:license <http://creativecommons.org/licenses/by/3.0/> ;
+  oboInOwl:date "09:11:2021 17:38" ;
+  oboInOwl:hasOBOFormatVersion "1.2" ;
+  rdfs:comment "test" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/definition
+obo:definition
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "definition" .
+
+
+###  http://purl.obolibrary.org/obo/expandAssertionTo
+obo:expandAssertionTo
+  rdf:type owl:AnnotationProperty ;
+  rdfs:label "expand assertion to" .
+
+
+###  http://purl.obolibrary.org/obo/neverInTaxon
+obo:neverInTaxon
+  rdf:type owl:AnnotationProperty ;
+  obo:definition "x never in taxon T if and only if T is a class, and x does not instantiate the class expression \"in taxon some T\". Note that this is a shortcut relation, and should be used as a hasValue restriction in OWL." ;
+  obo:expandAssertionTo "?X DisjointWith inTaxon some ?Y " ,
+      "Class: <http://www.w3.org/2002/07/owl#Nothing> EquivalentTo: ?X and (inTaxon some ?Y)" ;
+  oboInOwl:hasDbXref "RO:0002161" ;
+  oboInOwl:id "never_in_taxon" ;
+  oboInOwl:is_class_level "true"^^xsd:boolean ;
+  oboInOwl:is_metadata_tag "true"^^xsd:boolean ;
+  oboInOwl:shorthand "never_in_taxon" ;
+  rdfs:label "never in taxon" .
+
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description
+  rdf:type owl:AnnotationProperty ;
+  oboInOwl:hasDbXref "http://purl.org/dc/elements/1.1/description" ;
+  oboInOwl:id "dc-description" ;
+  oboInOwl:is_metadata_tag "true"^^xsd:boolean ;
+  oboInOwl:shorthand "dc-description" ;
+  rdfs:label "description" .
+
+
+###  http://purl.org/dc/elements/1.1/title
+dc:title
+  rdf:type owl:AnnotationProperty ;
+  oboInOwl:hasDbXref "http://purl.org/dc/elements/1.1/title" ;
+  oboInOwl:id "dc-title" ;
+  oboInOwl:is_metadata_tag "true"^^xsd:boolean ;
+  oboInOwl:shorthand "dc-title" ;
+  rdfs:label "title" .
+
+
+###  http://purl.org/dc/terms/license
+terms:license
+  rdf:type owl:AnnotationProperty ;
+  oboInOwl:hasDbXref "http://purl.org/dc/terms/license" ;
+  oboInOwl:id "dcterms-license" ;
+  oboInOwl:is_metadata_tag "true"^^xsd:boolean ;
+  oboInOwl:shorthand "dcterms-license" ;
+  rdfs:label "license" .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#date
+oboInOwl:date rdf:type owl:AnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasDbXref
+oboInOwl:hasDbXref rdf:type owl:AnnotationProperty ;
+                   rdfs:label "database_cross_reference" .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#hasOBOFormatVersion
+oboInOwl:hasOBOFormatVersion rdf:type owl:AnnotationProperty ;
+                             rdfs:label "has_obo_format_version" .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#id
+oboInOwl:id rdf:type owl:AnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#is_class_level
+oboInOwl:is_class_level rdf:type owl:AnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#is_metadata_tag
+oboInOwl:is_metadata_tag rdf:type owl:AnnotationProperty .
+
+
+###  http://www.geneontology.org/formats/oboInOwl#shorthand
+oboInOwl:shorthand rdf:type owl:AnnotationProperty ;
+                   rdfs:label "shorthand" .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#label
+rdfs:label rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://purl.obolibrary.org/obo/partOf
+obo:partOf
+  rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+  oboInOwl:hasDbXref "BFO:0000050" ;
+  oboInOwl:id "part_of" ;
+  oboInOwl:shorthand "part_of" ;
+  rdfs:label "part of" .
+
+
+###  http://purl.obolibrary.org/obo/onlyInTaxon
+obo:onlyInTaxon
+  rdf:type owl:ObjectProperty ;
+  rdfs:subPropertyOf obo:inTaxon ;
+  obo:definition "x only in taxon y if and only if x is in taxon y, and there is no other organism z such that y!=z a and x is in taxon z." ;
+  oboInOwl:hasDbXref "RO:0002160" ;
+  oboInOwl:id "only_in_taxon" ;
+  oboInOwl:shorthand "only_in_taxon" ;
+  rdfs:label "only in taxon" .
+
+
+###  http://purl.obolibrary.org/obo/inTaxon
+obo:inTaxon
+  rdf:type owl:ObjectProperty ;
+  owl:propertyChainAxiom
+    ( obo:partOf obo:inTaxon ) ,
+    ( obo:developsFrom obo:inTaxon ) ;
+  obo:definition "x is in taxon y if an only if y is an organism, and the relationship between x and y is one of: part of (reflexive), developmentally preceded by, derives from, secreted by, expressed." ;
+  oboInOwl:hasDbXref "RO:0002162" ;
+  oboInOwl:id "in_taxon" ;
+  oboInOwl:shorthand "in_taxon" ;
+  rdfs:label "in taxon" .
+
+
+###  http://purl.obolibrary.org/obo/developsFrom
+obo:developsFrom
+  rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+  owl:propertyChainAxiom
+    ( obo:developsFrom obo:partOf ) ;
+  oboInOwl:hasDbXref "RO:0002202" ;
+  oboInOwl:id "develops_from" ;
+  oboInOwl:shorthand "develops_from" ;
+  rdfs:label "develops from" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://purl.obolibrary.org/obo/ConnectedAnatomicalStructure
+obo:ConnectedAnatomicalStructure
+  rdf:type owl:Class ;
+  # rdfs:subClassOf
+  #   [ owl:onProperty obo:inTaxon ; owl:someValuesFrom obo:Vertebrata ] ;
+  oboInOwl:id "CARO:0000003" ;
+  rdfs:label "connected anatomical structure" .
+
+
+###  http://purl.obolibrary.org/obo/Hemichordata
+obo:Hemichordata
+  rdf:type owl:Class ;
+  rdfs:subClassOf obo:Deuterostomia ;
+  owl:disjointWith obo:Echinodermata , obo:Chordata ;
+  oboInOwl:id "NCBITaxon:10219" ;
+  rdfs:label "Hemichordata" .
+
+
+###  http://purl.obolibrary.org/obo/Deuterostomia
+obo:Deuterostomia
+  rdf:type owl:Class ;
+  oboInOwl:id "NCBITaxon:33511" ;
+  rdfs:label "Deuterostomia" .
+
+
+###  http://purl.obolibrary.org/obo/Echinodermata
+obo:Echinodermata
+  rdf:type owl:Class ;
+  rdfs:subClassOf obo:Deuterostomia ;
+  oboInOwl:id "NCBITaxon:7586" ;
+  rdfs:label "Echinodermata" .
+
+
+###  http://purl.obolibrary.org/obo/Chordata
+obo:Chordata
+  rdf:type owl:Class ;
+  rdfs:subClassOf obo:Deuterostomia ;
+  oboInOwl:id "NCBITaxon:7711" ;
+  rdfs:label "Chordata" .
+
+
+###  http://purl.obolibrary.org/obo/Vertebrata
+obo:Vertebrata
+  rdf:type owl:Class ;
+  rdfs:subClassOf obo:Chordata ;
+  oboInOwl:id "NCBITaxon:7742" ;
+  rdfs:label "Vertebrata" .
+
+
+###  http://purl.obolibrary.org/obo/Camera-TypeEye
+obo:Camera-TypeEye
+  rdf:type owl:Class ;
+  rdfs:subClassOf
+    obo:SimpleEye ,
+    [ owl:onProperty obo:developsFrom ; owl:someValuesFrom obo:NeuralPlate ] ;
+  oboInOwl:id "UBERON:0000019" ;
+  rdfs:label "camera-type eye" .
+
+
+###  http://purl.obolibrary.org/obo/SimpleEye
+obo:SimpleEye
+  rdf:type owl:Class ;
+  rdfs:subClassOf obo:ConnectedAnatomicalStructure ;
+  oboInOwl:id "UBERON:0000047" ;
+  rdfs:label "simple eye" .
+
+
+###  http://purl.obolibrary.org/obo/SimpleEyeWithMultipleLenses
+obo:SimpleEyeWithMultipleLenses
+  rdf:type owl:Class ;
+  rdfs:subClassOf obo:SimpleEye ;
+  obo:neverInTaxon obo:Chordata ;
+  oboInOwl:id "UBERON:0000050" ;
+  rdfs:label "simple eye with multiple lenses" .
+
+
+###  http://purl.obolibrary.org/obo/NeuralPlate
+obo:NeuralPlate
+  rdf:type owl:Class ;
+  rdfs:subClassOf
+    obo:ConnectedAnatomicalStructure ,
+    [ owl:onProperty obo:onlyInTaxon ; owl:someValuesFrom obo:Chordata ] ;
+  oboInOwl:id "UBERON:0003075" ;
+  rdfs:label "neural plate" .
+
+
+###  http://purl.obolibrary.org/obo/FakeLensWithGcis
+obo:FakeLensWithGcis
+  rdf:type owl:Class ;
+  rdfs:subClassOf obo:ConnectedAnatomicalStructure ;
+  oboInOwl:id "UBERON:9999998" ;
+  rdfs:label "fake lens with GCIs" .
+
+
+###  http://purl.obolibrary.org/obo/FakeLens
+obo:FakeLens
+  rdf:type owl:Class ;
+  rdfs:subClassOf
+    obo:ConnectedAnatomicalStructure ,
+    [ owl:onProperty obo:partOf ; owl:someValuesFrom obo:SimpleEyeWithMultipleLenses ] ;
+  oboInOwl:id "UBERON:9999999" ;
+  rdfs:label "fake lens" .
+
+
+###  http://www.w3.org/2002/07/owl#Nothing
+owl:Nothing owl:equivalentClass
+  [ owl:intersectionOf
+    ( obo:SimpleEyeWithMultipleLenses
+      [ owl:onProperty obo:inTaxon ; owl:someValuesFrom obo:Chordata ]
+    ) ;
+    rdf:type owl:Class
+  ] .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ owl:intersectionOf
+  ( obo:FakeLensWithGcis
+    [ owl:onProperty obo:partOf ; owl:someValuesFrom obo:Hemichordata ]
+  ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf
+    [ owl:onProperty obo:partOf ; owl:someValuesFrom obo:SimpleEye ]
+] .
+
+
+[ owl:intersectionOf
+  ( obo:FakeLensWithGcis
+    [ owl:onProperty obo:partOf ; owl:someValuesFrom obo:Echinodermata ]
+  ) ;
+  rdf:type owl:Class ;
+  rdfs:subClassOf
+    [ owl:onProperty obo:partOf ; owl:someValuesFrom obo:SimpleEyeWithMultipleLenses ]
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members (
+    obo:Hemichordata
+    obo:Echinodermata
+    obo:Chordata
+  )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members (
+    [ owl:onProperty obo:inTaxon ; owl:someValuesFrom obo:Hemichordata ]
+    [ owl:onProperty obo:inTaxon ; owl:someValuesFrom obo:Echinodermata ]
+    [ owl:onProperty obo:inTaxon ; owl:someValuesFrom obo:Chordata ]
+  )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
