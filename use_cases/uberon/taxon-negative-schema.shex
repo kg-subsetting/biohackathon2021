@@ -1,0 +1,123 @@
+# edit <#TargetTaxa> and run
+#   shex-validate -x example.shex -d example2.ttl -m '{ FOCUS rdfs:label _ }@start' --grep --list
+# from github clone:
+#   shex.js/packages/shex-cli/bin/validate...
+# expected output:
+# [
+#   "http://purl.obolibrary.org/obo/Camera-TypeEye",
+#   "http://purl.obolibrary.org/obo/SimpleEye",
+#   "http://purl.obolibrary.org/obo/NeuralPlate",
+#   "http://purl.obolibrary.org/obo/FakeLensWithGcis"
+# ]
+
+
+BASE <http://localhost/toy/>
+
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ncbi_taxon: <http://purl.obolibrary.org/obo/NCBITaxon_>
+
+
+start=
+  @<#Closure-ConnectedAnat> AND
+  ( NOT @<#NeverInTaxonDropOut>
+    OR NOT @<#OnlyInTaxonDropOut> )
+
+<#TargetTaxa> [ncbi_taxon:9606] OR {
+  ^rdfs:subClassOf @<#TargetTaxa> ;
+  ^rdfs:subClassOf . *
+}
+
+<#OnlyInTaxonDropOut> {
+  rdfs:subClassOf {
+    owl:onProperty [obo:RO_0002160] ;
+    owl:someValuesFrom NOT @<#TargetTaxa>
+  } ;
+  rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf @<#OnlyInTaxonDropOut> ;
+  rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf {
+    (
+      owl:onProperty [obo:RO_0002494] |
+      owl:onProperty [obo:RO_0002202] |
+      owl:onProperty [obo:BFO_0000050]
+    ) ;
+    owl:someValuesFrom @<#OnlyInTaxonDropOut>
+  } ;
+  rdfs:subClassOf . *
+} OR {
+  ^rdf:first {
+    ^owl:intersectionOf {
+      rdfs:subClassOf {
+        (
+          owl:onProperty [obo:RO_0002494] |
+          owl:onProperty [obo:RO_0002202] |
+          owl:onProperty [obo:BFO_0000050]
+        ) ;
+        owl:someValuesFrom @<#OnlyInTaxonDropOut>
+      }
+    } ;
+    rdf:rest {
+      rdf:first {
+        owl:onProperty [obo:BFO_0000050] ;
+        owl:someValuesFrom  [ncbi_taxon:~] # we want to drop out any substructure from any relation valid in any taxon
+      }
+    } ;
+  }
+}
+
+<#NeverInTaxonDropOut> {
+  obo:RO_0002161 @<#TargetTaxa> ;
+  obo:RO_0002161 . *
+} OR {
+  rdfs:subClassOf @<#NeverInTaxonDropOut> ;
+  rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf {
+    (
+      owl:onProperty [obo:RO_0002494] |
+      owl:onProperty [obo:RO_0002202] |
+      owl:onProperty [obo:BFO_0000050]
+    ) ;
+    owl:someValuesFrom @<#NeverInTaxonDropOut>
+  } ;
+  rdfs:subClassOf . *
+} OR {
+  ^rdf:first {
+    ^owl:intersectionOf {
+      rdfs:subClassOf {
+        (
+          owl:onProperty [obo:RO_0002494] |
+          owl:onProperty [obo:RO_0002202] |
+          owl:onProperty [obo:BFO_0000050]
+        ) ;
+        owl:someValuesFrom @<#NeverInTaxonDropOut>
+      }
+    } ;
+    rdf:rest {
+      rdf:first {
+        owl:onProperty [obo:BFO_0000050] ;
+        owl:someValuesFrom [ncbi_taxon:~] # we want to drop out any substructure from any relation valid in any taxon
+      }
+    } ;
+  }
+}
+
+<#Closure-ConnectedAnat> [obo:UBERON_0001062] OR {
+  rdfs:subClassOf @<#Closure-ConnectedAnat> ;
+  rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf {
+    (
+      owl:onProperty [obo:RO_0002494] |
+      owl:onProperty [obo:RO_0002202] |
+      owl:onProperty [obo:BFO_0000050]
+    ) ;
+    owl:someValuesFrom @<#Closure-ConnectedAnat>
+  }
+}
+
