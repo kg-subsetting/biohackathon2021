@@ -47,6 +47,7 @@ start= (
 } OR {
   rdfs:subClassOf {
     (
+      owl:onProperty [obo:RO_0002494] |
       owl:onProperty [obo:RO_0002202] |
       owl:onProperty [obo:BFO_0000050]
     ) ;
@@ -58,6 +59,7 @@ start= (
     ^owl:intersectionOf {
       rdfs:subClassOf {
         (
+          owl:onProperty [obo:RO_0002494] |
           owl:onProperty [obo:RO_0002202] |
           owl:onProperty [obo:BFO_0000050]
         ) ;
@@ -85,6 +87,7 @@ start= (
 } OR {
   rdfs:subClassOf {
     (
+      owl:onProperty [obo:RO_0002494] |
       owl:onProperty [obo:RO_0002202] |
       owl:onProperty [obo:BFO_0000050]
     ) ;
@@ -96,6 +99,7 @@ start= (
     ^owl:intersectionOf {
       rdfs:subClassOf {
         (
+          owl:onProperty [obo:RO_0002494] |
           owl:onProperty [obo:RO_0002202] |
           owl:onProperty [obo:BFO_0000050]
         ) ;
@@ -120,6 +124,7 @@ start= (
 } OR {
   rdfs:subClassOf {
     (
+      owl:onProperty [obo:RO_0002494] |
       owl:onProperty [obo:RO_0002202] |
       owl:onProperty [obo:BFO_0000050]
     ) ;
@@ -131,6 +136,7 @@ start= (
     ^owl:intersectionOf {
       rdfs:subClassOf {
         (
+          owl:onProperty [obo:RO_0002494] |
           owl:onProperty [obo:RO_0002202] |
           owl:onProperty [obo:BFO_0000050]
         ) ;
@@ -149,5 +155,14 @@ start= (
 <#Closure-ConnectedAnat> [obo:UBERON_0001062] OR {
   rdfs:subClassOf @<#Closure-ConnectedAnat> ;
   rdfs:subClassOf . *
+} OR {
+  rdfs:subClassOf {
+    (
+      owl:onProperty [obo:RO_0002494] |
+      owl:onProperty [obo:RO_0002202] |
+      owl:onProperty [obo:BFO_0000050]
+    ) ;
+    owl:someValuesFrom @<#Closure-ConnectedAnat>
+  }
 }
 
