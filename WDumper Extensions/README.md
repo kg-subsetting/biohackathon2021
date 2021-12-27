@@ -46,3 +46,18 @@ optional arguments:
 An example using the repo files will add labels and descriptions for missing Q IDs and P IDs (optional) to a decompressed WDumper .nt file:
 ```
 python .\add_missing_QPid_labels.py .\therapeutic_use.nt -ip
+```
+### Create a random specification file to select a random subset of Wikidata Qids
+WDumper specification files are based on filters. In those filters you can select entities that have a specific property or a specific value for a specific property. However, one can not select a specific Qid directly. By tweaking the WDumper code, selecting a Qid is possible now. Then, Use `create_random_spec.py` to create a random WDumper specification file and extract a random subset of Qids from Wikidata:
+
+```
+usage: create_random_spec.py [-h] [-o OUTPUT] [-n NUMBER]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -o OUTPUT, --output OUTPUT
+                        Output file
+  -n NUMBER, --number NUMBER
+                        Determines how many items will be in the specification file.
+```
+Note: Use this forked repo of WDumper in order to extract random subset using the above script. Main WDumper (bennofs) does not support this type of specification files. 
