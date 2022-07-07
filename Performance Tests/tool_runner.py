@@ -1,5 +1,7 @@
+import subprocess
 import sys
 from argparse import ArgumentParser
+from datetime import datetime
 from pathlib import Path
 from typing import List, Optional, Union
 
@@ -36,6 +38,13 @@ def main(argv: Optional[Union[str, List[str]]] = None, prog: Optional[str] = Non
 
 def run_wdumper(dump: Path) -> int:
     print('Starting a new run of WDumper ...')
+    print('=================================')
+    start_time = datetime.now()
+    process = subprocess.Popen('./wdumper/build/install/wdumper/bin/wdumper-cli {0} {1}'.format(str(dump), './spec.json'), shell=True)
+    process.wait()
+    end_time = datetime.now()
+    print('=================================')
+    print('DONE WDumper, Exec time: {0}'.format(end_time - start_time))
 
 
 def run_wdf(dump: Path) -> int:
