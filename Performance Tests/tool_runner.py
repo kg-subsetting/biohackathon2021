@@ -40,7 +40,7 @@ def run_wdumper(dump: Path) -> int:
     print('Starting a new run of WDumper ...')
     print('=================================')
     start_time = datetime.now()
-    process = subprocess.Popen('./wdumper/build/install/wdumper/bin/wdumper-cli {0} {1}'.format(str(dump), './spec.json'), shell=True)
+    process = subprocess.Popen('./WDUMPER/wdumper/build/install/wdumper/bin/wdumper-cli {0} {1}'.format(str(dump), './spec.json'), shell=True)
     process.wait()
     end_time = datetime.now()
     print('=================================')
