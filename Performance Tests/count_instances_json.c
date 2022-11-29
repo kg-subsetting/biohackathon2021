@@ -4,6 +4,8 @@
 #include <regex.h>        
 #include <string.h>
 
+// counts the number of occurrences of a regex in a line
+// thanks to https://stackoverflow.com/questions/36975020/count-number-of-matches-using-regex-h-in-c
 int num_of_match(regex_t *pexp, char *sz) {
     regmatch_t whole_match;
     int eflags = 0;
@@ -15,9 +17,6 @@ int num_of_match(regex_t *pexp, char *sz) {
         eflags = REG_NOTBOL;
         match = 1;
         ctr += 1;
-        //printf("range %zd - %zd matches\n",
-        //       offset + whole_match.rm_so,
-        //       offset + whole_match.rm_eo);
         offset += whole_match.rm_eo;
         if (whole_match.rm_so == whole_match.rm_eo) {
             offset += 1;
@@ -25,9 +24,6 @@ int num_of_match(regex_t *pexp, char *sz) {
         if (offset > length) {
             break;
         }
-    }
-    if (! match) {
-        printf("\"%s\" does not contain a match\n", sz);
     }
     return ctr; 
 }
@@ -37,9 +33,8 @@ int main(int argc, char *argv[])
     if(argc < 2) 
         return 1;
     
-    FILE * fp;
-    FILE * fw;
-    char * line = NULL;
+    FILE *fp, *fw_genes, *fw_proteins, *fw_chemicals, *fw_diseases;
+    char *line = NULL;
     size_t len = 0;
     ssize_t read;
     
@@ -48,14 +43,14 @@ int main(int argc, char *argv[])
     regex_t chemical_regex;
     regex_t disease_regex;
     regex_t statement_regex;
-    regex_t human_gene_regex;
+    regex_t operon_regex;
     regex_t acid_regex;
     int reti;
     int gene_match = 0;
     int protein_match = 0;
     int chemical_match = 0;
     int disease_match = 0;
-    int human_gene_match = 0;
+    int operon_match = 0;
     int acid_match = 0;
     int gene_statements = 0;
     int protein_statements = 0;
@@ -84,7 +79,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Could not compile regex\n");
         exit(1);
     }
-    reti = regcomp(&human_gene_regex, "\"property\":\"P31\".*\"entity-type\":\"item\",\"numeric-id\":106291923", 0);
+    reti = regcomp(&operon_regex, "\"property\":\"P31\".*\"entity-type\":\"item\",\"numeric-id\":139677", 0);
     if (reti) {
         fprintf(stderr, "Could not compile regex\n");
         exit(1);
@@ -102,7 +97,10 @@ int main(int argc, char *argv[])
 
     
     fp = fopen(argv[1], "r");
-    fw = fopen("list_instances_of_genes.csv", "w");
+    fw_genes = fopen("list_instances_of_genes.csv", "w");
+    fw_proteins = fopen("list_instances_of_proteins.csv", "w");
+    fw_chemicals = fopen("list_instances_of_chemical_compounds.csv", "w");
+    fw_diseases = fopen("list_instances_of_diseases.csv", "w");
     if (fp == NULL)
         exit(EXIT_FAILURE);
     int item_statements = 0;
@@ -112,26 +110,29 @@ int main(int argc, char *argv[])
         if (!reti) {
             gene_match++;
             gene_statements += item_statements;
-            fprintf(fw, "%.*s\n",40,line);
+            fprintf(fw_genes, "%.*s\n",40,line);
         }
         reti = regexec(&protein_regex, line, 0, NULL, 0);
         if (!reti) {
             protein_match++;
             protein_statements += item_statements;
+            fprintf(fw_proteins, "%.*s\n",40,line);
         }
         reti = regexec(&chemical_regex, line, 0, NULL, 0);
         if (!reti) {
             chemical_match++;
             chemical_statements += item_statements;
+            fprintf(fw_chemicals, "%.*s\n",40,line);
         }
         reti = regexec(&disease_regex, line, 0, NULL, 0);
         if (!reti) {
             disease_match++;
             disease_statements += item_statements;
+            fprintf(fw_diseases, "%.*s\n",40,line);
         }
-        reti = regexec(&human_gene_regex, line, 0, NULL, 0);
+        reti = regexec(&operon_regex, line, 0, NULL, 0);
         if (!reti) {
-            human_gene_match++;
+            operon_match++;
         }
         reti = regexec(&acid_regex, line, 0, NULL, 0);
         if (!reti) {
@@ -143,7 +144,7 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Proteins: %d\n",protein_match);
     fprintf(stderr, "Chemical Compounds: %d\n",chemical_match);
     fprintf(stderr, "Diseases: %d\n",disease_match);
-    fprintf(stderr, "Human Genes: %d\n",human_gene_match);
+    fprintf(stderr, "Operons: %d\n",operon_match);
     fprintf(stderr, "Acids: %d\n",acid_match);
     fprintf(stderr, "\n");
     fprintf(stderr, "Gene Statements: %d\n", gene_statements);
@@ -158,9 +159,13 @@ int main(int argc, char *argv[])
     regfree(&chemical_regex);
     regfree(&disease_regex);
     regfree(&statement_regex);
-    regfree(&human_gene_regex);
+    regfree(&operon_regex);
     regfree(&acid_regex);
     fclose(fp);
+    fclose(fw_genes);
+    fclose(fw_proteins);
+    fclose(fw_chemicals);
+    fclose(fw_diseases);
     if (line)
         free(line);
     exit(EXIT_SUCCESS);
