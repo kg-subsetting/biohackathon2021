@@ -1,0 +1,10 @@
+PREFIX wikibase: <http://wikiba.se/ontology#>
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT DISTINCT (COUNT(?statementNode) AS ?count) WHERE{
+        ?item wdt:P31 wd:Q12136.
+
+        ?item ?p_prop ?statementNode.
+        ?statementNode a wikibase:Statement.
+}

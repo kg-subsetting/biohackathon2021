@@ -1,0 +1,6 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT DISTINCT (COUNT(?item) AS ?count) WHERE{
+        ?item wdt:P31 wd:Q11158.
+}
