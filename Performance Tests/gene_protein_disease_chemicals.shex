@@ -1,0 +1,6 @@
+prefix wd:  <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+	
+	<ShapeProteinOrGene> EXTRA wdt:P31{
+	    wdt:P31 [ wd:Q8054 wd:Q7187 wd:Q12136 wd:Q11173];
+	}
