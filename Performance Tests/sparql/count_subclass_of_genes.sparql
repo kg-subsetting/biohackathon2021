@@ -1,0 +1,6 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT (COUNT(?item) AS ?count) WHERE{
+  ?item wdt:P279+ wd:Q7187  # subclass of (P279) gene (Q7187)
+}
