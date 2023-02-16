@@ -1,0 +1,7 @@
+PREFIX wd: <http://www.wikidata.org/entity/>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT ?item WHERE{
+  ?item wdt:P31 wd:Q11173 .  # chemical compound (Q11173)
+  ?item wdt:P31 wd:Q11158 .  # acid (Q11158)
+}
